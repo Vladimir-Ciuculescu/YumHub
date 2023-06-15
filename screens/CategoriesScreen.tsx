@@ -7,6 +7,7 @@ const CategoriesScreen: React.FC<any> = () => {
   return (
     <View flex={1} justifyContent="center" alignItems="center">
       <FlatList
+        showsVerticalScrollIndicator={false}
         numColumns={2}
         data={CATEGORIES}
         keyExtractor={(item) => item.id}
