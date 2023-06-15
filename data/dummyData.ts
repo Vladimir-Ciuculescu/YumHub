@@ -1,4 +1,5 @@
-import { Category } from "../interfaces/category";
+import { CategoryIcons } from "../assets/icons";
+import { Category } from "../interfaces/Category";
 import Meal from "../interfaces/Meal";
 
 export const CATEGORIES: Category[] = [
@@ -6,51 +7,61 @@ export const CATEGORIES: Category[] = [
     id: "c1",
     title: "Italian",
     color: "#f5428d",
+    image: CategoryIcons.Italian,
   },
   {
     id: "c2",
     title: "Quick & Easy",
     color: "#f54242",
+    image: CategoryIcons.Quick_Easy,
   },
   {
     id: "c3",
     title: "Hamburgers",
     color: "#f5a442",
+    image: CategoryIcons.Hamburgers,
   },
   {
     id: "c4",
     title: "German",
     color: "#f5d142",
+    image: CategoryIcons.German,
   },
   {
     id: "c5",
     title: "Light & Lovely",
     color: "#368dff",
+    image: CategoryIcons.Light_Lovely,
   },
   {
     id: "c6",
     title: "Exotic",
     color: "#41d95d",
+    image: CategoryIcons.Exotic,
   },
   {
     id: "c7",
     title: "Breakfast",
     color: "#9eecff",
+    image: CategoryIcons.Brekfast,
   },
   {
     id: "c8",
     title: "Asian",
     color: "#b9ffb0",
+    image: CategoryIcons.Asian,
   },
   {
     id: "c9",
     title: "French",
     color: "#ffc7ff",
+    image: CategoryIcons.French,
   },
   {
     id: "c10",
     title: "Summer",
     color: "#47fced",
+    image: CategoryIcons.Summer,
   },
 ];
 
