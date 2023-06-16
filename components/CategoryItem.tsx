@@ -1,11 +1,13 @@
+import { GestureResponderEvent } from "react-native";
 import { View, Image, VStack, Pressable, Text } from "native-base";
 import { Category } from "../interfaces/Category";
 
 interface CategoryItemProps {
   category: Category;
+  onPress: (e: string[] | GestureResponderEvent) => void;
 }
 
-const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
+const CategoryItem: React.FC<CategoryItemProps> = ({ category, onPress }) => {
   const { id, title, color, image } = category;
   return (
     <View>
@@ -18,6 +20,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
         shadow={5}
         justifyContent="center"
         _pressed={{ opacity: 0.75 }}
+        onPress={onPress}
       >
         <VStack space={3} alignItems="center">
           <Image source={image} alt={title} width={10} height={10} />
