@@ -18,7 +18,17 @@ const MealItem: React.FC<MealItemProps> = ({ meal }) => {
   const { navigate } = useNavigation<NativeStackNavigationProp<any>>();
 
   return (
-    <View borderRadius={17} shadow={2} bgColor="muted.50">
+    <View
+      borderRadius={17}
+      style={{
+        shadowOpacity: 0.08,
+        shadowOffset: {
+          width: 0,
+          height: 5,
+        },
+      }}
+      bgColor="muted.100"
+    >
       <HStack
         p={2.5}
         alignItems="center"
@@ -71,7 +81,7 @@ const MealItem: React.FC<MealItemProps> = ({ meal }) => {
             height={7}
             justifyContent="center"
             alignItems="center"
-            onPress={() => navigate("MealDetails", { title: title })}
+            onPress={() => navigate("MealDetails", { meal: meal })}
           >
             <AntDesign name="arrowright" size={18} color="white" />
           </Pressable>

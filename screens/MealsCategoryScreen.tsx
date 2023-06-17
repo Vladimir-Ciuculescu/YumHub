@@ -2,8 +2,6 @@ import React, { useLayoutEffect } from "react";
 import { Text, View, Pressable, FlatList, HStack, Image } from "native-base";
 import { MEALS } from "../data/dummyData";
 import { Ionicons } from "@expo/vector-icons";
-import Spaghetti from "../assets/images/Spaghetti.webp";
-import { AntDesign } from "@expo/vector-icons";
 import MealItem from "../components/MealItem";
 
 const MealsCategoryScreen: React.FC<any> = ({ navigation, route }) => {
@@ -32,7 +30,7 @@ const MealsCategoryScreen: React.FC<any> = ({ navigation, route }) => {
   return (
     <View px={5} pt={7} flex={1} bg="white">
       <FlatList
-        ItemSeparatorComponent={() => <View p={2}></View>}
+        ItemSeparatorComponent={() => <View p={2} />}
         data={meals}
         keyExtractor={(meal) => meal.id}
         renderItem={({ item }) => <MealItem meal={item} />}

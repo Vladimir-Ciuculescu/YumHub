@@ -6,14 +6,17 @@ import React, {
   useState,
 } from "react";
 import { useWindowDimensions, Image } from "react-native";
-import { Text, View } from "native-base";
+import { View } from "native-base";
 import BottomSheet from "@gorhom/bottom-sheet";
 import Spaghetii from "../assets/images/Spaghetti.webp";
 import MealActions from "../components/MealActions";
+import MealDetails from "../components/MealDetails";
 
-const MealDetailsScreen: React.FC<any> = ({ navigation }) => {
+const MealDetailsScreen: React.FC<any> = ({ navigation, route }) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const [index, setIndex] = useState<number>(0);
+
+  const { width } = useWindowDimensions();
 
   const snapPoints = useMemo(() => ["50%", "90%"], []);
 
@@ -21,13 +24,15 @@ const MealDetailsScreen: React.FC<any> = ({ navigation }) => {
     setIndex(index === 0 ? 1 : 0);
   }, []);
 
-  const { width } = useWindowDimensions();
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, [navigation]);
+
+  const {
+    params: { meal },
+  } = route;
 
   const BottomSheetBackground = (props) => {
     const { style } = props;
@@ -47,7 +52,10 @@ const MealDetailsScreen: React.FC<any> = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Image source={Spaghetii} style={{ width: width, height: "52%" }} />
+      <Image
+        source={{ uri: meal.imageUrl }}
+        style={{ width: width, height: "52%" }}
+      />
       <BottomSheet
         backgroundComponent={(props) => <BottomSheetBackground {...props} />}
         ref={bottomSheetRef}
@@ -56,9 +64,7 @@ const MealDetailsScreen: React.FC<any> = ({ navigation }) => {
         onAnimate={toggleSheet}
         animateOnMount={false}
       >
-        <View style={{ flex: 1 }}>
-          <Text>Awesome 🎉</Text>
-        </View>
+        <MealDetails meal={meal} />
       </BottomSheet>
       <MealActions index={index} />
     </View>
