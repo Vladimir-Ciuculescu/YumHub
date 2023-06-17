@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, Text } from "native-base";
 import { useFonts } from "expo-font";
 import Trueno from "./assets/fonts/TruenoRound.otf";
 import Rozanova from "./assets/fonts/Rozanova.otf";

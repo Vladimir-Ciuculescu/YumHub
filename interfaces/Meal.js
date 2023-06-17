@@ -1,4 +1,4 @@
-class Meal {
+export class Meal {
   constructor(
     id,
     categoryIds,

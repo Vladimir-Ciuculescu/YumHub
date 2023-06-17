@@ -2,10 +2,11 @@ import {
   AntDesign,
   MaterialIcons,
   MaterialCommunityIcons,
-  Foundation,
 } from "@expo/vector-icons";
-import { Text, View, Pressable, HStack, Image, Box, VStack } from "native-base";
+import { Text, View, Pressable, HStack, Image, VStack } from "native-base";
 import Meal from "../interfaces/MealInterface";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 interface MealItemProps {
   meal: Meal;
@@ -13,6 +14,9 @@ interface MealItemProps {
 
 const MealItem: React.FC<MealItemProps> = ({ meal }) => {
   const { title, imageUrl, duration, complexity } = meal;
+
+  const { navigate } = useNavigation<NativeStackNavigationProp<any>>();
+
   return (
     <View borderRadius={17} shadow={2} bgColor="muted.50">
       <HStack
@@ -67,6 +71,7 @@ const MealItem: React.FC<MealItemProps> = ({ meal }) => {
             height={7}
             justifyContent="center"
             alignItems="center"
+            onPress={() => navigate("MealDetails", { title: title })}
           >
             <AntDesign name="arrowright" size={18} color="white" />
           </Pressable>
