@@ -77,7 +77,7 @@ const SegmentedControl = (props) => {
             <Text
               fontSize={14}
               textAlign="center"
-              fontFamily="Rozanova"
+              fontFamily="NunitoBold"
               color={isCurrentIndex ? "muted.100" : "muted.900"}
             >
               {tab}

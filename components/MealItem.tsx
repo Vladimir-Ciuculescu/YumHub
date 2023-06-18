@@ -55,7 +55,7 @@ const MealItem: React.FC<MealItemProps> = ({ meal }) => {
             py={1}
             px={2}
           >
-            <Text fontFamily="Rozanova" fontSize={14}>
+            <Text fontFamily="NunitoBold" fontSize={14}>
               {title}
             </Text>
             <HStack justifyContent="space-between">

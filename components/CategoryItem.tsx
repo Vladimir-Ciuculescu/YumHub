@@ -24,7 +24,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category, onPress }) => {
       >
         <VStack space={3} alignItems="center">
           <Image source={image} alt={title} width={10} height={10} />
-          <Text fontFamily="Trueno" fontSize={15}>
+          <Text fontFamily="Rozanova" fontSize={15}>
             {title}
           </Text>
         </VStack>

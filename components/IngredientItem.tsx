@@ -24,7 +24,7 @@ const IngredientItem: React.FC<IngredientItemProps> = ({ ingredient }) => {
         },
       }}
     >
-      <Text fontFamily="Rozanova" fontSize={15}>
+      <Text fontFamily="NunitoBold" fontSize={15}>
         {ingredient}
       </Text>
     </Box>
