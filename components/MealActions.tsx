@@ -1,5 +1,6 @@
 import { IconButton } from "native-base";
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -8,16 +9,20 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+import { RootState } from "../redux/store";
+import Meal from "../interfaces/Meal";
+import { addFavorite, removeFavorite } from "../redux/favorites";
 
 interface MealActionsProps {
   index: number;
+  meal: Meal;
 }
 
-const MealActions: React.FC<MealActionsProps> = ({ index }) => {
+const MealActions: React.FC<MealActionsProps> = ({ index, meal }) => {
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   const opacityValue = useSharedValue(1);
-
+  const { favorites } = useSelector((state: RootState) => state.favorites);
   const opacity = useAnimatedStyle(() => {
     return {
       opacity: opacityValue.value,
@@ -33,6 +38,16 @@ const MealActions: React.FC<MealActionsProps> = ({ index }) => {
   }, [index]);
 
   const AnimatedIcon = Animated.createAnimatedComponent(IconButton);
+
+  const isFavorite = favorites.find((item) => item.id === meal.id);
+
+  const toggleFavoriteMeal = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(meal));
+    } else {
+      dispatch(addFavorite(meal));
+    }
+  };
 
   return (
     <Fragment>
@@ -62,6 +77,8 @@ const MealActions: React.FC<MealActionsProps> = ({ index }) => {
       />
 
       <AnimatedIcon
+        onPress={toggleFavoriteMeal}
+        _pressed={{ backgroundColor: "white" }}
         variant="solid"
         style={[
           {
@@ -77,9 +94,9 @@ const MealActions: React.FC<MealActionsProps> = ({ index }) => {
         bg="white"
         _icon={{
           as: MaterialIcons,
-          name: "favorite-outline",
+          name: isFavorite ? "favorite" : "favorite-outline",
           size: 6,
-          color: "muted.900",
+          color: "red.500",
         }}
         shadow={5}
       />

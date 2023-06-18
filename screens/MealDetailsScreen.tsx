@@ -66,7 +66,7 @@ const MealDetailsScreen: React.FC<any> = ({ navigation, route }) => {
       >
         <MealDetails meal={meal} />
       </BottomSheet>
-      <MealActions index={index} />
+      <MealActions index={index} meal={meal} />
     </View>
   );
 };

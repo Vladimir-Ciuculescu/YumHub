@@ -6,7 +6,11 @@ import MealsCategoryScreen from "./screens/MealsCategoryScreen";
 import MealDetailsScreen from "./screens/MealDetailsScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import FavoritesScreen from "./screens/FavoritesScreen";
-import { Entypo } from "@expo/vector-icons";
+import {
+  Entypo,
+  MaterialIcons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { Pressable } from "native-base";
 
 const Stack = createNativeStackNavigator();
@@ -18,14 +22,46 @@ const Home = () => {
       initialRouteName="CategoriesScreen"
       screenOptions={({ navigation }) => ({
         headerLeft: () => (
-          <Pressable ml={2} onPress={navigation.toggleDrawer}>
+          <Pressable ml={4} onPress={navigation.toggleDrawer}>
             <Entypo name="menu" size={26} color="black" />
           </Pressable>
         ),
+        drawerActiveTintColor: "white",
+        drawerActiveBackgroundColor: "black",
+        drawerLabelStyle: {
+          fontFamily: "NunitoBold",
+          fontSize: 17,
+        },
       })}
     >
-      <Drawer.Screen component={CategoriesScreen} name="CategoriesScreen" />
-      <Drawer.Screen component={FavoritesScreen} name="FavoritesScreen" />
+      <Drawer.Screen
+        component={CategoriesScreen}
+        name="CategoriesScreen"
+        options={{
+          title: "All Categories",
+          drawerIcon: ({ focused }) => (
+            <MaterialCommunityIcons
+              name={focused ? "food-drumstick-outline" : "food-drumstick"}
+              size={24}
+              color={focused ? "white" : "black"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        component={FavoritesScreen}
+        name="FavoritesScreen"
+        options={{
+          title: "Favorites",
+          drawerIcon: ({ focused }) => (
+            <MaterialIcons
+              name={focused ? "favorite-outline" : "favorite"}
+              size={24}
+              color={focused ? "white" : "black"}
+            />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 };
