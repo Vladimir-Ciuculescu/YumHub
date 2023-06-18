@@ -25,7 +25,11 @@ const InstructionItem: React.FC<InstructionItemProps> = ({
         </Text>
       </Box>
 
-      <Text flex={1} fontFamily="NunitoBold" fontSize={17} flexWrap="wrap">
+      <Text
+        style={{ flex: 1, flexWrap: "wrap", flexShrink: 1 }}
+        fontFamily="NunitoBold"
+        fontSize={17}
+      >
         {instruction}
       </Text>
     </HStack>

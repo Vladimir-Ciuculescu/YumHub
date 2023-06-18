@@ -8,7 +8,6 @@ import NunitoBold from "./assets/fonts/NunitoBold.ttf";
 
 export default function App() {
   useFonts({
-    Rozanova: Rozanova,
     Nunito: Nunito,
     NunitoBold: NunitoBold,
   });
